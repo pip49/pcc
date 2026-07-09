@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC정비사 2급 기출문제 단답형 요약 (2023.11.05 교정판)</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --sub-text-color: #666666;
+            --border-color: #e1e4e6;
+            --answer-bg: #e0e7ff;
+            --answer-text: #4338ca;
+            --btn-bg: #2d3748;
+            --btn-hover: #1a202c;
+            --card-hover-shadow: rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #818cf8;
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --sub-text-color: #a0aec0;
+            --border-color: #4a5568;
+            --answer-bg: #1a202c;
+            --answer-text: #818cf8;
+            --btn-bg: #4a5568;
+            --btn-hover: #718096;
+            --card-hover-shadow: rgba(0,0,0,0.25);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Malgun Gothic';
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: var(--sub-text-color);
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-mode-btn {
+            background-color: var(--btn-bg);
+        }
+        .quiz-mode-btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--primary-color);
+            max-width: 150px;
+        }
+        .theme-toggle-btn:hover {
+            background-color: #4f46e5;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn {
+            background-color: #e2e8f0;
+            color: #1a202c;
+        }
+        [data-theme="dark"] .theme-toggle-btn:hover {
+            background-color: #cbd5e0;
+        }
+
+        .subject-title {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .qa-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, background-color 0.3s, border-color 0.3s, box-shadow 0.2s;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--card-hover-shadow);
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            background-color: var(--answer-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 10px 14px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            color: var(--answer-text);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        /* 퀴즈 모드 스타일 */
+        .hide-answer .answer {
+            color: transparent;
+            background-color: var(--border-color);
+            border-left-color: var(--sub-text-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .hide-answer .answer:hover {
+            background-color: var(--answer-bg);
+        }
+
+        .hide-answer .answer.revealed {
+            color: var(--answer-text);
+            border-left-color: var(--primary-color);
+            background-color: var(--answer-bg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>PC정비사 2급 필기 기출문제 요약</h1>
+        <div class="subtitle">2023년 11월 05일 시행 | 오개념 방지 교정 버전</div>
+    </header>
+
+    <div class="controls">
+        <button class="btn quiz-mode-btn" onclick="toggleQuizMode()">정답 가리기 토글 (클릭 시 정답 확인)</button>
+        <button class="btn theme-toggle-btn" onclick="toggleTheme()">🌙 다크모드</button>
+    </div>
+
+    <div id="content-area">
+
+        <div class="subject-title">1과목: PC유지보수</div>
+        <div class="qa-card">
+            <div class="question">1. Windows PowerShell에서 PC의 현재 로컬 국가 및 시스템 언어 정보를 확인하고자 할 때 사용하는 정확한 명령어는?</div>
+            <div class="answer">Get-WinSystemLocale</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">2. 리눅스(Linux) 배포판 종류 중에서 데비안(Debian) 패키지 관리 체계를 계승하여 개발된 가장 대중적인 배포판 제품은?</div>
+            <div class="answer">Ubuntu (우분투)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">3. Windows 장치 관리자에서 '이 디바이스를 시작하기에 충분한 리소스가 없음'이라는 경고와 함께 할당 자원 충돌이 일어났음을 뜻하는 에러 코드는?</div>
+            <div class="answer">코드 12 (CM_PROB_NORMAL_CONFLICT)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">4. Windows 10의 '설정' 창 내부에서 모니터 해상도, 야간 모드, 배율 등 디스플레이 관련 옵션을 조작하기 위해 선택해야 하는 대메뉴 항목은?</div>
+            <div class="answer">시스템</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">5. Windows 10의 '실행' 창(Win+R)에서 시스템 제어 및 설정을 위해 정상 작동하는 실제 핵심 단축 명령어들은?</div>
+            <div class="answer">msconfig.exe(시스템 구성), regedit.exe(레지스트리 편집기), timedate.cpl(날짜 및 시간) (※ iexplorer.exe는 작동하지 않는 오타 명령어임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">6. 리눅스(Linux) 터미널 환경에서 'test'라는 이름을 가진 파일 내부를 검색하여 'ICQA'라는 특정 문자열(단어)을 찾아 출력하는 올바른 명령 구문은?</div>
+            <div class="answer">grep ICQA test</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">7. Windows 10 Pro에 기본 내장되어 스파이웨어, 멀웨어 및 기타 악성 소프트웨어로부터 컴퓨터 시스템을 실시간으로 방어해 주는 보안 프로그램 명칭은?</div>
+            <div class="answer">Windows Defender (윈도우 디펜더)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">8. 애플 사의 데스크톱/노트북 라인업에 탑재되는 운영체제인 MacOS가 가지는 명확한 핵심 하드웨어/소프트웨어적 기반 특징은?</div>
+            <div class="answer">Unix(유닉스) 시스템 구조를 기반으로 개발되었다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">9. 운영체제 비선점형 스케줄링 중 HRN(Highest Response ratio Next) 방식이 가지는 알고리즘적 특징과 올바른 우선순위 계산 공식은?</div>
+            <div class="answer">SJF 방식의 긴 작업 불평등(기아 현상)을 보완하기 위해 대기 시간을 고려하며, 우선순위 공식은 '(대기 시간 + 서비스 시간) / 서비스 시간' 이다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">10. Windows 10 환경에서 로그인하는 사용자 계정의 암호(비밀번호)를 신규 설정하거나 변경하기 위해 진입해야 하는 계정 세부 항목 명칭은?</div>
+            <div class="answer">로그인 옵션</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">11. 유닉스(UNIX) 시스템의 내부 구조 중, 커널 공간에서 커널 모드로 실행되며 사용자와 직접 상호 작용하지 않고 부팅 시 생성되어 상주하는 특권 프로세스는?</div>
+            <div class="answer">커널 스레드 (Kernel Thread)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">12. Windows 시스템 파일 복원 작업이나 기술 지원을 받기 전, 현재 구동 중인 Windows의 정확한 빌드 및 버전 정보 창을 띄워 확인하는 명령어는?</div>
+            <div class="answer">winver</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">13. 가상 기억장치 관리의 페이징(Paging) 체계에서 논리 주소를 물리 주소로 신속하게 변환하기 위해 실제로 채택해 사용하는 사상(Mapping) 기술 종류 3가지는?</div>
+            <div class="answer">Direct Mapping(직접 사상), Associative Mapping(연관 사상), Associative/Direct Mapping(연관/직접 사상)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">14. Windows 실행창에서 제어판 시스템 속성 도구를 완전하게 즉시 호출하기 위해 사용하는 제어 명령어와 실행창 매칭 이름은?</div>
+            <div class="answer">control sysdm.cpl</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">15. 소프트웨어 공학에서 프로그래머가 작성한 고급 언어의 원시 프로그램(Source)을 컴퓨터 하드웨어가 이해할 수 있는 기계어로 직접 변환시켜 주는 시스템 프로그램은?</div>
+            <div class="answer">언어 번역 프로그램 (Language Translator Program)</div>
+        </div>
+
+        <div class="subject-title">2과목: PC운영체제 및 하드웨어</div>
+        <div class="qa-card">
+            <div class="question">16. 마이크로소프트 공식 가이드 기준으로, Windows 10 64비트 운영체제를 쾌적하게 설치하고 운용하기 위해 요구되는 최소 권장 RAM 용량은?</div>
+            <div class="answer">2GB 이상</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">17. 생산 및 목재/금속 가공 분야에 혁신을 가져온 3D 프린터 하드웨어 장치에 대한 명확한 기술적 사실은 무엇인가?</div>
+            <div class="answer">인쇄 방식은 재료를 층층이 쌓아 올리는 '적층형' 방식이 주로 사용된다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">18. 게임 및 3D 그래픽 구동 시 모니터 주사율과 그래픽카드 프레임 불일치로 화면이 찢어지는 티어링을 제어하기 위해, AMD 사가 독자 개발하여 라이선스 비용 없이 보급한 실시간 화면 동기화 기술은?</div>
+            <div class="answer">FreeSync (프리싱크)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">19. 디스크 미러링 방식을 사용하여 데이터 안전성을 극대화하는 RAID-1 구성 환경이 가지는 고유한 실제 하드웨어적 특징들은?</div>
+            <div class="answer">두 드라이브에 동일 데이터를 동시 복제하므로 비용이 많이 들고 신뢰도가 매우 높으며, 읽기 작업 시 병렬 읽기가 가능하다 (※ 쓰기 속도가 2배가 되지는 않음)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">20. 자성 플래터 기반 하드디스크(HDD) 드라이브의 실제 전체 물리적 저장 용량을 정확하게 산출해 내기 위해 사용하는 수식 구성 요소들은 무엇인가?</div>
+            <div class="answer">Head(헤드)의 수, Cylinder(실린더) 수, Sector(섹터) 수, 섹터당 바이트(용량)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">21. 데스크톱 RAM 표면에 부착된 라벨 정보(예: 16GB 2R x 8 PC4-2666V-UB1)를 통해 기술자가 정합성 있게 판독할 수 있는 정보들은?</div>
+            <div class="answer">16GB(메모리 총 용량), 2R(양면 메모리 구조), UB(UnBuffered 일반 메모리 규격)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">22. 디스플레이 모니터 및 멀티미디어 장치 인터페이스 중, 오직 '아날로그 영상 신호만' 전송할 수 있으며 음성(오디오) 통합 전송은 완전히 불가능한 규격은?</div>
+            <div class="answer">D-Sub (VGA 포트) (※ HDMI, DP, 썬더볼트는 고해상도 영상과 멀티채널 음성을 동시 전송 가능)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">23. 인텔(Intel) 사의 모바일 및 노트북 프로세서 라인업에 탑재되어, 배터리 구동 시 작업 부하에 맞춰 CPU 클록과 전압을 실시간 조절해 배터리 타임을 늘려주는 전력 관리 기술명은?</div>
+            <div class="answer">스피드 스텝 (SpeedStep)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">24. 반도체형 저장장치인 SSD의 수명과 내구성을 연장하기 위해, 반도체 특정 셀에만 쓰기 작업이 집중되어 열화 및 파괴되는 것을 막고 골고루 분산하여 기록하는 핵심 제어 기술은?</div>
+            <div class="answer">웨어 레벨링 (Wear Leveling / 마모 평준화)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">25. 프린터 및 스캐너 등 화상 출력 기기의 하드웨어 스펙 인쇄 선명도를 평가할 때 사용되는 단위로, 1인치당 표현되는 점(Dot)의 개수를 의미하는 단위 기호는?</div>
+            <div class="answer">DPI (Dots Per Inch)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">26. 전력 공급망의 순간적인 전압 변동(상승/강하) 스트레스로부터 컴퓨터 부품을 보호하기 위해 입력 전압을 언제나 일정하게 자동 조절하여 유지해 주는 장치는?</div>
+            <div class="answer">AVR (자동 전압 조정기)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">27. 무선 와이파이(Wi-Fi) 공유기 통신 기술 중, 안테나 자원을 최적화하여 복수의 무선 단말 기기가 속도 저하 없이 동시에 최대 속도로 와이파이를 공유해 쓰도록 지원하는 다중 사용자 안테나 기술은?</div>
+            <div class="answer">MU-MIMO (Multi-User Multiple Input Multiple Output)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">28. 컴퓨터 사운드 카드의 음향 신호 합성 방식인 PCM(Pulse Code Modulation) 방식의 정확한 동작 원리와 기술적 사실은 무엇인가?</div>
+            <div class="answer">아날로그 소리 신호를 일정 주기마다 샘플링(수치화)하여 디지털 데이터로 변환 후 녹음 및 재생하는 표준 방식이다 (샘플링 속도가 높을수록 고음질이 되며 파일 용량은 커진다)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">29. 데스크톱 및 시스템 메인보드 설계 시 메모리 뱅크 슬롯에 실제로 장착하여 상용 가동하는 RAM 반도체 종류 규격들은 어떤 것들이 있는가?</div>
+            <div class="answer">SDRAM, DDR2-DRAM, DDR3-DRAM, DDR4/DDR5-DRAM 등</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">30. 컴퓨터 본체 전원 인가 직후 하드웨어 자가 진단 및 초기화를 총괄하며 메인보드 칩셋에 탑재되어 기본 연동을 제어하는 최하위 펌웨어 소프트웨어는?</div>
+            <div class="answer">BIOS (바이오스)</div>
+        </div>
+
+        <div class="subject-title">3과목: PC주변기기 및 안전관리</div>
+        <div class="qa-card">
+            <div class="question">31. Windows 10 부팅 환경에서 시스템 부팅 구성 매개변수(BCD) 데이터를 직접 텍스트 기반으로 정밀 수정하고 관리하여 부팅 제어권을 조작하는 명령 도구 명칭은?</div>
+            <div class="answer">Bcdedit</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">32. 컴퓨터 전원을 켰을 때 하드웨어 결함 유무를 자가 진단하는 POST(Power On Self Test) 루틴 도중, 실제 모니터 화면에 정상 표시 및 출력되는 물리 정보들은?</div>
+            <div class="answer">장착된 CPU의 실제 동작 클록(속도), 장착된 메모리(RAM)의 전체 용량, 메인보드 제조사 및 바이오스(BIOS) 버전 정보 (※ 윈도우 등의 운영체제 버전은 OS 부팅이 시작된 후에 나타남)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">33. PC를 기동했으나 화면에 'No bootable device' 경고 메시지가 출력되며 정지하는 하드웨어 및 설정 에러의 실제 유효한 원인 3가지는 무엇인가?</div>
+            <div class="answer">HDD 또는 SSD의 케이블 연결 불량, 드라이브 내 부팅 가능한 운영체제(OS) 미설치, 메인보드 BIOS 내 부팅 드라이브 우선순위 설정 오류</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">34. 과거 고성능 쿨링과 소음 차단을 목표로 설계되었던 메인보드 폼팩터 규격인 BTX 하드웨어의 명확한 구조적 특징은 무엇인가?</div>
+            <div class="answer">기존 ATX 규격과 달리 확장 카드 슬롯이 상단으로 배치되고, 램 뱅크가 CPU 소켓 아래 공간에 위치하는 독특한 시퀀스를 가진다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">35. 최신 UEFI 바이오스 시스템과 완벽 연동되며, 과거 2TB 용량 한계를 극복하고 디스크 하나에 주 파티션을 최대 128개까지 생성 가능하게 만든 64비트 주소 체계 파티션 표준 규격은?</div>
+            <div class="answer">GPT (GUID Partition Table)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">36. 구형 Award BIOS 설정 메뉴 중에서, 시스템의 전력 절감 기능(Standby, Suspend Mode 등) 및 그린 PC 수면 모드를 정밀 제어하고자 할 때 진입해야 하는 메뉴 항목은?</div>
+            <div class="answer">Power Management Setup</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">37. 조립 PC 제작 시, 메인보드 측면에 배치된 USB, 사운드, 랜포트 등 각종 I/O 단자들이 컴퓨터 케이스 후면 구멍 밖으로 깔끔하게 노출 및 보호되도록 고정해 주는 얇은 철제 가이드는?</div>
+            <div class="answer">백 패널 (Back Panel)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">38. BIOS Setup 내부의 [Halt On] 제어 항목 중, 비치명적인 주변기기 오류가 검출되더라도 시스템 포스트 과정을 중단하지 않고 끝까지 부팅을 진행시키는 올바른 옵션 설정값 명칭은?</div>
+            <div class="answer">No Errors</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">39. 운영체제를 새로 설치하기 위해 정상적인 부팅용 USB를 PC에 연결하고 재부팅했으나, USB 설치 화면으로 진입하지 못할 때 기술자가 가장 먼저 최우선 확인해야 할 사항은?</div>
+            <div class="answer">메인보드 BIOS Setup에 진입하여 부팅 장치 우선순위(Boot Priority)에서 USB 드라이브가 최상위로 설정되어 있는지 확인한다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">40. 저장 장치 포맷 방식 중, 드라이브 내부의 실제 저장 데이터(파일) 자체는 그대로 보존해 둔 채, 파일의 위치 정보를 가리키고 기록하는 인덱스 테이블 테이블(FAT 영역)만 신속하게 밀어버리는 방식은?</div>
+            <div class="answer">빠른 포맷 (Quick Format)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">41. 컴퓨터 시스템 아키텍처에서 주변 장치(스토리지, 네트워크 카드 등)가 데이터를 전송할 때, 메인 CPU의 자원 소모와 간섭 없이 주기억장치(RAM)와 직접 고속으로 데이터를 주고받는 통신 기술 제어 방식은?</div>
+            <div class="answer">DMA (Direct Memory Access)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">42. 데스크톱 하드웨어 부품과 노트북 하드웨어 부품 간의 상호 규격 차이 및 기술적 진실은 무엇인가?</div>
+            <div class="answer">노트북용 2.5인치 SATA 하드디스크/SSD는 데스크톱 제품과 인터페이스 데이터 단자 규격이 완벽히 동일하다 (※ 단, CPU는 전력 및 소켓이 달라 서로 호환 불가)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">43. PC 시스템의 메인보드 바이오스 세팅(BIOS Setup) 콘솔 창 내부에서 사용자가 수동 조작 및 환경 구성을 처리할 수 있는 핵심 제어 기능들은?</div>
+            <div class="answer">부팅 드라이브 장치 순서 변경, 시스템 표준 날짜 및 시간 수정, 하드디스크 장치 인식 타입 설정 등 (※ 웹서버 가동을 위한 Web Service 설정은 불가)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">44. 조립 PC 작업 중, CPU 다이 위에 냉각팬(Cooler) 및 히트싱크 어셈블리를 안전하고 정합성 있게 메인보드에 결착하는 올바른 하드웨어 가이드는?</div>
+            <div class="answer">방열판 다리의 고정 핀 방향을 확인한 후, 메인보드 홀 4곳에 위치를 맞추고 딸깍 소리가 명확히 나도록 아래로 대각선 교차 순서로 눌러 확실히 고정한다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">45. 컴퓨터 모니터를 일상적으로 장시간 사용할 때 발생할 수 있는 잠재적 전자파 노출 피해를 물리적으로 줄이고 눈 건강을 지키기 위한 올바른 예방 조치 가이드는?</div>
+            <div class="answer">국제 전자파 안전 인증 규격인 TCO 또는 EMI 규격을 공식 통과한 검증된 모니터 기기를 사용하고, 장시간 작업 시 규칙적인 휴식을 취한다</div>
+        </div>
+
+        <div class="subject-title">4과목: PC네트워크</div>
+        <div class="qa-card">
+            <div class="question">46. TCP/IP 인터넷 망에서 논리적인 IP 주소 정보를 기반으로, 통신 대상 컴퓨터의 실제 하드웨어 주소인 48비트 MAC 주소(물리 주소)를 찾아내 매칭시켜 주는 핵심 네트워크 프로토콜은?</div>
+            <div class="answer">ARP (Address Resolution Protocol)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">47. 가전 제품 및 모바일 기기 간의 홈 네트워크 연동 표준으로, 동일 인증을 받은 장치끼리 유/무선 네트워크 상에서 사진, 음악, 동영상 등의 미디어 콘텐츠를 끊김 없이 상호 공유하고 재생하도록 지원하는 기술 표준은?</div>
+            <div class="answer">DLNA (Digital Living Network Alliance)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">48. 인터넷 TCP/IP 프로토콜 스택 중, 네트워크 계층(IP 레벨)에서 패킷 전송 도중 에러가 발생하거나 목적지 도달 불가능 등의 문제가 생겼을 때 송신 측에 통신 상태 및 오류 정보를 제어 메시지로 전달해 주는 프로토콜은?</div>
+            <div class="answer">ICMP (Internet Control Message Protocol)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">49. 정보 통신 네트워크 환경에서 송수신 기기 간에 데이터 패킷을 정확하게 교환하기 위해 정의하는 '프로토콜(Protocol)'이 가지는 명확한 기술적 사실과 핵심 필수 기능은?</div>
+            <div class="answer">통신 개체 간에 '무엇을, 어떻게, 언제' 통신할 것인가 약속한 상호 규정이며, 주요 기능으로 흐름 제어, 동기화, 에러 검출 기능을 수행한다 (※ 상호 통신을 하려면 송수신측이 항상 '동일한' 프로토콜 체계를 써야 한다)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">50. ISO 국제 표준 OSI 참조 모델 7계층 구조 중 최상위 레이어에 해당하며, 사용자 응용 프로그램과의 직접적인 인터페이스를 담당하고 파일 전송, 작업 조작 및 단말기 제어 기능을 제공하는 계층 명칭은?</div>
+            <div class="answer">제 7계층 - 응용 계층 (Application Layer)</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleQuizMode() {
+        document.getElementById('content-area').classList.toggle('hide-answer');
+    }
+
+    document.getElementById('content-area').addEventListener('click', function(e) {
+        if (e.target.classList.contains('answer')) {
+            e.target.classList.toggle('revealed');
+        }
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        const themeBtn = document.querySelector('.theme-toggle-btn');
+
+        if (body.hasAttribute('data-theme')) {
+            body.removeAttribute('data-theme');
+            themeBtn.innerHTML = '🌙 다크모드';
+            localStorage.setItem('theme4', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = '☀️ 라이트모드';
+            localStorage.setItem('theme4', 'dark');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme4');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle-btn').innerHTML = '☀️ 라이트모드';
+        }
+    });
+</script>
+
+</body>
+</html>
