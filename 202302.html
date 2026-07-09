@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC정비사 2급 기출문제 단답형 요약 (부정형 문장 교정판)</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --sub-text-color: #666666;
+            --border-color: #e1e4e6;
+            --answer-bg: #edf2f7;
+            --answer-text: #2b6cb0;
+            --btn-bg: #2d3748;
+            --btn-hover: #1a202c;
+            --card-hover-shadow: rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #63b3ed;
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --sub-text-color: #a0aec0;
+            --border-color: #4a5568;
+            --answer-bg: #1a202c;
+            --answer-text: #63b3ed;
+            --btn-bg: #4a5568;
+            --btn-hover: #718096;
+            --card-hover-shadow: rgba(0,0,0,0.25);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Malgun Gothic';
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: var(--sub-text-color);
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-mode-btn {
+            background-color: var(--btn-bg);
+        }
+        .quiz-mode-btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .theme-toggle-btn {
+            background-color: #4a90e2;
+            max-width: 150px;
+        }
+        .theme-toggle-btn:hover {
+            background-color: #357abd;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn {
+            background-color: #e2e8f0;
+            color: #1a202c;
+        }
+        [data-theme="dark"] .theme-toggle-btn:hover {
+            background-color: #cbd5e0;
+        }
+
+        .subject-title {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .qa-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, background-color 0.3s, border-color 0.3s, box-shadow 0.2s;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--card-hover-shadow);
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            background-color: var(--answer-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 10px 14px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            color: var(--answer-text);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        /* 퀴즈 모드 스타일 */
+        .hide-answer .answer {
+            color: transparent;
+            background-color: var(--border-color);
+            border-left-color: var(--sub-text-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .hide-answer .answer:hover {
+            background-color: var(--answer-bg);
+        }
+
+        .hide-answer .answer.revealed {
+            color: var(--answer-text);
+            border-left-color: var(--primary-color);
+            background-color: var(--answer-bg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>PC정비사 2급 필기 기출문제 요약</h1>
+        <div class="subtitle">2023년 02월 26일 시행 | 개념 교정 완료 버전</div>
+    </header>
+
+    <div class="controls">
+        <button class="btn quiz-mode-btn" onclick="toggleQuizMode()">정답 가리기 토글 (클릭 시 정답 확인)</button>
+        <button class="btn theme-toggle-btn" onclick="toggleTheme()">🌙 다크모드</button>
+    </div>
+
+    <div id="content-area">
+
+        <div class="subject-title">1과목: PC유지보수</div>
+        <div class="qa-card">
+            <div class="question">1. Windows 명령 프롬프트에서 메인보드의 모델명을 확인하기 위해 입력하는 명령어는?</div>
+            <div class="answer">wmic baseboard get product</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">2. Windows 로컬 로그온 성공 시 생성되는 Access Token에 포함되는 핵심 정보 2가지는?</div>
+            <div class="answer">사용자의 식별자(Identification)와 사용자의 보안 설정</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">3. Windows 10 Pro에서 가상 메모리(페이징 파일) 설정 시 화면에 제공되는 올바른 정보 3가지는?</div>
+            <div class="answer">드라이브[볼륨 레이블], 모든 드라이브의 총 페이징 파일 크기, 선택된 드라이브의 페이징 파일 크기</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">4. Windows 10 실행창(Win+R)에서 인터넷 익스플로러를 실행하기 위한 올바른 명령어는?</div>
+            <div class="answer">iexplore.exe (※ iexplorer.exe는 잘못된 명령어)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">5. Windows 10에서 디스플레이 설정을 변경하기 위해 선택해야 하는 Windows 설정 메뉴 항목은?</div>
+            <div class="answer">시스템</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">6. Windows 10 Pro의 [시스템 구성(msconfig)] - [도구] 탭에서 실행할 수 있는 대표적인 하위 기능들은?</div>
+            <div class="answer">Windows 정보, 이벤트 뷰어, 프로그램 변경, 작업 관리자, 명령 프롬프트 등 (※ 동기화 센터는 없음)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">7. 비교 대상을 두고 하드웨어나 소프트웨어의 성능을 비교 시험하고 평가하는 테스트를 무엇이라 하는가?</div>
+            <div class="answer">벤치마크 테스트 (Bench Mark Test)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">8. Windows 10 디스크 관리에서 새로운 드라이브(볼륨)를 생성할 때 시스템 재부팅이 필요한가?</div>
+            <div class="answer">필요 없다 (새 볼륨 생성 후 즉시 포맷하여 사용 가능)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">9. Windows 10에서 사용자 계정의 암호를 변경하기 위해 선택해야 하는 설정 항목은?</div>
+            <div class="answer">로그인 옵션</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">10. 유닉스(UNIX) 시스템 시작부터 종료까지 백그라운드에서 상주하며 시스템 서비스를 지원하는 특권 프로세스는?</div>
+            <div class="answer">커널 스레드 (Kernel Thread) 또는 데몬(Daemon) 프로세스</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">11. 데이터 전송 시 에러를 검출할 뿐만 아니라 자신이 직접 찾아 수정까지 할 수 있는 오류 정정 코드는?</div>
+            <div class="answer">해밍 코드 (Hamming Code)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">12. 미국의 Bell 연구소에서 개발되었으며 멀티태스킹과 다중 사용자를 지원하여 중대형 서버에 주로 사용되는 운영체제는?</div>
+            <div class="answer">유닉스 (Unix)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">13. 가상 기억 장치의 페이징 기법에서 주소 변환(매핑)에 사용되는 실제 종류 3가지는?</div>
+            <div class="answer">직접 매핑(Direct), 연관 매핑(Associative), 연관/직접 혼합 매핑(Combined)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">14. CPU 스케줄링 기법을 이용하여 사용자들에게 일정한 시간(Time Slice)을 번갈아 할당하여 CPU를 사용하게 하는 시스템은?</div>
+            <div class="answer">시분할 처리 시스템 (Time Sharing System)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">15. 데이터가 발생하는 즉시 컴퓨터에서 처리가 이루어지는 방식으로, 은행 온라인이나 기차 좌석 예약 등에 사용되는 운영체제 처리 방식은?</div>
+            <div class="answer">실시간 처리 방식 (Real-Time Processing)</div>
+        </div>
+
+        <div class="subject-title">2과목: PC운영체제 및 하드웨어</div>
+        <div class="qa-card">
+            <div class="question">16. 주기억장치 중 컴퓨터의 기본적인 입출력(BIOS)에 관한 모든 것을 관장하며 비휘발성인 성격을 가진 장치는?</div>
+            <div class="answer">롬 바이오스 (ROM BIOS)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">17. 인텔과 마이크론의 합작으로 탄생한 RAM 일종의 비휘발성 메모리로, NAND 플래시보다 레이턴시가 1000배 빠르고 수명이 뛰어난 메모리는?</div>
+            <div class="answer">옵테인 메모리 (Optane Memory)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">18. 디스크 회전 방식 중 등각속도(CAV) 방식의 진짜 특징은 무엇인가?</div>
+            <div class="answer">디스크의 회전 속도가 일정하며, 안쪽 트랙일수록 저장 밀도가 높다 (※ 바깥쪽 공간이 낭비됨)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">19. 과거 병렬 프린터 인터페이스에서 사용하던 실제 데이터 전송 모드 규약 종류 3가지는?</div>
+            <div class="answer">SPP (표준), EPP (향상), ECP (확장)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">20. 컴퓨터 인터페이스 규격 중 병렬 데이터 통신 방식을 사용하는 내부 버스 규격은?</div>
+            <div class="answer">PCI BUS (※ USB, RS232C, IEEE1394는 모두 직렬 통신)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">21. RISC 구조와 비교했을 때, CISC 구조 프로세서의 레지스터 개수 특징은?</div>
+            <div class="answer">CISC는 RISC에 비해 상대적으로 내부 레지스터 개수가 적다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">22. 하드디스크의 다중영역기록(MZR) 방식에서 디스크 회전 속도와 데이터 전송 속도의 특징은?</div>
+            <div class="answer">디스크 회전 속도는 일정하지만, 섹터가 많은 바깥쪽 트랙을 읽을 때 데이터 전송 속도가 더 빠르다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">23. Windows 10 디스크 볼륨 구성 중 하나의 하드디스크가 고장 나더라도 데이터 결함 허용(장애 복구)이 가능한 볼륨 종류 두 가지는?</div>
+            <div class="answer">미러 볼륨, RAID-5 볼륨</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">24. 차세대 비휘발성 메모리(NVRAM)의 실제 종류들은 어떤 것들이 있는가?</div>
+            <div class="answer">PRAM, FRAM, MRAM 등 (※ SGRAM은 그래픽용 휘발성 RAM임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">25. 사운드 카드에서 소리의 주파수를 변조(신호 합성)하여 전자적인 컴퓨터 음을 만들어내는 방식은?</div>
+            <div class="answer">FM(Frequency Modulation) 음원 방식</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">26. 입출력 장치와 메모리 간 데이터 전송 시, CPU의 간섭(개입) 없이 고속으로 직접 데이터를 전달하는 방법은?</div>
+            <div class="answer">DMA (Direct Memory Access)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">27. 자장의 척력을 이용하여 근접한 하드디스크 트랙을 밀도 높게 읽어낼 수 있도록 고안된 자모 저항 헤드 기술은?</div>
+            <div class="answer">MR (Magneto Resistive) 기술</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">28. 기계적 하드디스크(HDD)와 비교했을 때 SSD(Solid State Drive)의 전력 소비량 특징은?</div>
+            <div class="answer">전력 소비량이 매우 낮아 노트북 배터리 지속 시간을 향상시킨다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">29. 스마트폰을 일종의 무선 모뎀으로 활용하여 노트북 등의 외부 기기가 무선 인터넷을 사용할 수 있게 해주는 기술은?</div>
+            <div class="answer">테더링 (Tethering)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">30. 뮤직 신디사이저, 전자 악기, 컴퓨터 등을 상호 연결하여 연주 데이터를 주고받을 수 있도록 하는 표준 인터페이스 규격은?</div>
+            <div class="answer">MIDI (Musical Instrument Digital Interface)</div>
+        </div>
+
+        <div class="subject-title">3과목: PC주변기기 및 안전관리</div>
+        <div class="qa-card">
+            <div class="question">31. PC의 하드웨어 기본 설정 및 구성 정보(장착된 드라이버, 시간 등)를 기억해두고 전원이 꺼져도 유지하는 메인보드 상의 장소는?</div>
+            <div class="answer">CMOS (RAM)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">32. Windows 10 시스템 점검 및 오류 진단을 위한 '안전 모드'로 진입하도록 설정하는 가장 확실한 방법은?</div>
+            <div class="answer">시스템 구성(msconfig) 유틸리티에서 '안전 부팅'을 체크한 후 재부팅한다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">33. 노트북 분실 시 내부 데이터를 안전하게 보호하기 위해 하드디스크 전체를 암호화하는 하드웨어 암호화 방식(Windows 기능 포함)은?</div>
+            <div class="answer">BitLocker (또는 BIOS 암호 설정 / 하드웨어 암호화 가동)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">34. 바이오스(BIOS) 설정 메뉴 중 시스템의 현재 시간, 하드디스크 연결 상태, 기본 탑재 메모리 용량 등을 확인하고 수정하는 기본 메뉴는?</div>
+            <div class="answer">Standard CMOS Features</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">35. 다른 파일에 기생하지 않고 네트워크를 통해 자신을 복제 및 전파하며, 메모리 내에서 자가 증식하여 과도한 트래픽을 유발하는 악성 프로그램은?</div>
+            <div class="answer">웜 (Worm)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">36. 과거 노트북 확장 슬롯 표준이었던 PCMCIA 규격 중, 주로 외장 하드디스크 인터페이스 장착용으로 사용되던 가장 두꺼운 규격(10.5mm)은?</div>
+            <div class="answer">Type III (타입 3)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">37. Windows 디스크 공간 확보 시 절대 삭제해서는 안 되는 제어판 관련 항목의 확장자는 무엇인가?</div>
+            <div class="answer">.cpl (Control Panel)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">38. SATA 하드디스크의 입출력 명령을 최적화하여 속도를 높이는 NCQ(Native Command Queuing) 기능 활성화의 필수 조건은?</div>
+            <div class="answer">SATA 하드디스크 인터페이스 및 BIOS 상의 AHCI 모드 활성화 필요</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">39. 컴퓨터 전원을 켰을 때 실행되는 POST(Power On Self Test)의 올바른 초기 진단 순서는?</div>
+            <div class="answer">시스템 버스 테스트 → CMOS 내용 확인 → 그래픽 카드 테스트 → 메모리 테스트 → 키보드 테스트 → P&P 기능 동작 → 디스크 테스트 → DMI 기능 동작</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">40. 네트워크(매직 패킷)를 이용하여 원격지에 있는 컴퓨터의 전원을 원격으로 켜고자 할 때 바이오스에서 활성화해야 하는 기능은?</div>
+            <div class="answer">WOL (Wake On LAN)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">41. PC 전원이 들어오면 시스템 메인보드 내부의 주 컴퓨터 장치와 메모리, 주변 기기 등을 자동으로 진단하는 일련의 과정을 무엇이라 하는가?</div>
+            <div class="answer">POST (Power On Self Test)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">42. 베이스 클록이 100MHz인 CPU의 배수를 40배수에서 45배수로 오버클록 하면 클록 속도는 몇 GHz에서 몇 GHz로 변하는가?</div>
+            <div class="answer">4.0GHz -> 4.5GHz</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">43. 마우스 분류 중 PS/2, USB, 블루투스 등은 무엇에 따른 분류 유형인가?</div>
+            <div class="answer">컴퓨터와의 연결 인터페이스(인터페이스 방식)에 따른 분류</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">44. 장시간 컴퓨터 사용으로 인해 나타나는 눈의 피로, 어깨 및 손목 통증, 두통 등의 육체적 증상들을 총칭하는 증후군은?</div>
+            <div class="answer">VDT 증후군 (Visual Display Terminal Syndrome)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">45. Windows 10 부팅 시 자동으로 실행되는 시작 프로그램을 제어하고 관리하기 위해 사용하는 시스템 구성 유틸리티 실행 명령어는?</div>
+            <div class="answer">msconfig.exe</div>
+        </div>
+
+        <div class="subject-title">4과목: PC네트워크</div>
+        <div class="qa-card">
+            <div class="question">46. OSI 7계층 중 데이터의 인코딩/디코딩, 압축 및 압축 해제, 암호화 및 복호화 기능을 담당하는 계층은?</div>
+            <div class="answer">표현 계층 (Presentation Layer)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">47. 인터넷 서비스 프로토콜인 FTP가 데이터 전송 및 제어를 위해 사용하는 올바른 기본 포트(Port) 번호들은?</div>
+            <div class="answer">20번(Data) 및 21번(Connection 제어) 포트</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">48. 네트워크 장비 중 상위 계층의 주소 해석 없이, 단순히 감쇄된 전송 신호를 증폭하고 재생하여 다음 세그먼트로 전달하는 장치는?</div>
+            <div class="answer">리피터 (Repeater)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">49. C클래스 네트워크(100.100.100.0/24)를 최소 6개 서브넷으로 쪼개고 각 서브넷당 20대 이상 호스트를 주려면 서브넷 마스크 비트를 몇 개 대여해야 하는가?</div>
+            <div class="answer">3비트 대여 (즉, /27 서브넷 마스크 활용 시 서브넷 8개, 호스트 30대씩 가능)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">50. 침입 패턴 DB 및 인지 엔진을 통해 네트워크 침입 사건을 실시간으로 감시, 탐지하고 사전/사후에 대응하는 네트워크 보안 시스템은?</div>
+            <div class="answer">침입 탐지 시스템 (IDS : Intrusion Detection System)</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleQuizMode() {
+        document.getElementById('content-area').classList.toggle('hide-answer');
+    }
+
+    document.getElementById('content-area').addEventListener('click', function(e) {
+        if (e.target.classList.contains('answer')) {
+            e.target.classList.toggle('revealed');
+        }
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        const themeBtn = document.querySelector('.theme-toggle-btn');
+
+        if (body.hasAttribute('data-theme')) {
+            body.removeAttribute('data-theme');
+            themeBtn.innerHTML = '🌙 다크모드';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = '☀️ 라이트모드';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle-btn').innerHTML = '☀️ 라이트모드';
+        }
+    });
+</script>
+
+</body>
+</html>
