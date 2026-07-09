@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC정비사 2급 기출문제 단답형 요약 (2023.08.20 교정판)</title>
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --sub-text-color: #666666;
+            --border-color: #e1e4e6;
+            --answer-bg: #ecfdf5;
+            --answer-text: #047857;
+            --btn-bg: #2d3748;
+            --btn-hover: #1a202c;
+            --card-hover-shadow: rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #34d399;
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --sub-text-color: #a0aec0;
+            --border-color: #4a5568;
+            --answer-bg: #1a202c;
+            --answer-text: #34d399;
+            --btn-bg: #4a5568;
+            --btn-hover: #718096;
+            --card-hover-shadow: rgba(0,0,0,0.25);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Malgun Gothic';
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: var(--sub-text-color);
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-mode-btn {
+            background-color: var(--btn-bg);
+        }
+        .quiz-mode-btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--primary-color);
+            max-width: 150px;
+        }
+        .theme-toggle-btn:hover {
+            background-color: #059669;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn {
+            background-color: #e2e8f0;
+            color: #1a202c;
+        }
+        [data-theme="dark"] .theme-toggle-btn:hover {
+            background-color: #cbd5e0;
+        }
+
+        .subject-title {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .qa-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, background-color 0.3s, border-color 0.3s, box-shadow 0.2s;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--card-hover-shadow);
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            background-color: var(--answer-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 10px 14px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            color: var(--answer-text);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        /* 퀴즈 모드 스타일 */
+        .hide-answer .answer {
+            color: transparent;
+            background-color: var(--border-color);
+            border-left-color: var(--sub-text-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .hide-answer .answer:hover {
+            background-color: var(--answer-bg);
+        }
+
+        .hide-answer .answer.revealed {
+            color: var(--answer-text);
+            border-left-color: var(--primary-color);
+            background-color: var(--answer-bg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>PC정비사 2급 필기 기출문제 요약</h1>
+        <div class="subtitle">2023년 08월 20일 시행 | 오개념 방지 교정 버전</div>
+    </header>
+
+    <div class="controls">
+        <button class="btn quiz-mode-btn" onclick="toggleQuizMode()">정답 가리기 토글 (클릭 시 정답 확인)</button>
+        <button class="btn theme-toggle-btn" onclick="toggleTheme()">🌙 다크모드</button>
+    </div>
+
+    <div id="content-area">
+
+        <div class="subject-title">1과목: PC유지보수</div>
+        <div class="qa-card">
+            <div class="question">1. Windows 10에서만 독립적으로 지원 및 제공되는 Hyper-V 전용 기능은 무엇인가?</div>
+            <div class="answer">기본 네트워크(NAT 스위치) (※ 복제본, 가상 파이버 채널, 실시간 마이그레이션은 서버 운영체제 공통)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">2. 운영체제의 기억장치 관리 전략 중, 프로그램이나 데이터를 주기억장치의 어디에 위치시킬지 결정하는 실제 배치(Placement) 전략 3가지는?</div>
+            <div class="answer">최초 적합 (First Fit), 최적 적합 (Best Fit), 최악 적합 (Worst Fit) (※ 요구 반입은 가져오는 '반입 전략'임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">3. 운영체제의 운영 방식 중 '멀티프로그래밍(Multi-Programming)'의 정확한 정의는?</div>
+            <div class="answer">하나의 컴퓨터 시스템에 두 개 이상의 프로그램을 동시에 주기억장치에 적재하여 처리하는 방법</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">4. Windows 10의 [디스플레이 설정] 메뉴 내부에서 사용자가 직접 조작하고 구성할 수 있는 진짜 기능 3가지는?</div>
+            <div class="answer">모니터 선택 및 재배열, 배율 및 레이아웃 설정, 해상도 변경 (※ 바탕화면 배경 설정은 '개인 설정' 메뉴 담당)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">5. Windows 시스템에서 내부적 또는 외부적 하드웨어 비정상 원인으로 발생하는 실제 인터럽트(Interrupt)의 대표적인 종류들은?</div>
+            -- 하드웨어 인터럽트: 슈퍼바이저 콜(SVC), 재시작, 입출력, 외부, 기계 검사 인터럽트 등 (※ 상태 전이 인터럽트는 존재하지 않음)
+        </div>
+        <div class="qa-card">
+            <div class="question">6. Windows 10 Pro의 주요 기본 관리 도구들의 실제 올바른 역할과 쓰임새는?</div>
+            <div class="answer">디스크 정리(필요 없는 파일 제거), iSCSI 초기자(원격 iSCSI 대상 연결 설정), 시스템 정보(현재 하드웨어 및 OS 스펙 표시)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">7. Windows 10 Pro 명령 프롬프트(CMD)에서 유용하게 사용하는 올바른 명령어와 기능 매칭은?</div>
+            <div class="answer">FOR(파일 반복 명령 실행), DISKPART(디스크 파티션 구성), GPRESULT(그룹 정책 정보 표시) (※ 파일 삭제 명령은 DEL 또는 ERASE임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">8. Windows 10 Professional 환경에서 관리하는 휴지통(Recycle Bin)의 진짜 특징들은 무엇인가?</div>
+            <div class="answer">휴지통을 비우면 하드디스크의 가용 용량이 즉시 늘어나며, 사용자가 직접 최대 크기를 지정할 수 있다 (※ 최소 크기 설정은 없음, USB 삭제 파일은 휴지통을 거치지 않고 영구 삭제됨)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">9. 가상 메모리(Virtual Memory) 시스템을 설계하고 운영할 때 밀접하게 연관되어 다루어지는 핵심 핵심 기술 용어들은?</div>
+            <div class="answer">Page Fault(페이지 부재), Thrashing(스래싱), Demand Paging(요구 페이징) (※ DMA는 CPU 개입 없는 고속 입출력 기술임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">10. Windows 10 Pro에 기본 내장되어 별도의 설치 없이 바로 쓸 수 있는 보조 프로그램 종류들은?</div>
+            <div class="answer">워드패드, 그림판, 캡처 도구 등 (※ MS WORD는 별도로 구매하여 설치해야 하는 상용 오피스 소프트웨어임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">11. 컴퓨터 소프트웨어 공학에서 로더(Loader)가 원시 프로그램을 받아 주기억장치에 올릴 때 가동하는 실제 핵심 기능 4가지는?</div>
+            <div class="answer">할당 (Allocation), 연결 (Linking), 재배치 (Relocation), 적재 (Loading) (※ 번역은 컴파일러나 인터프리터의 기능임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">12. Windows 10의 '실행' 창(Win+R)에서 부팅 시 자동으로 켜지는 시작프로그램 폴더를 바로 열기 위해 사용하는 단축 명령어는?</div>
+            <div class="answer">shell:startup</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">13. Windows 10에서 프로젝터나 외부 듀얼 모니터를 상호 연결한 후 화면 복제, 확장 메뉴를 빠르게 호출하는 단축키는?</div>
+            <div class="answer">윈도우 로고 키 + P</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">14. 컴퓨터 부팅 정보를 담당하는 디스크 부트 섹터 영역을 오염시켜 부팅 지연 및 불가능을 초래하는 대표적인 부트 바이러스 종류는?</div>
+            <div class="answer">브레인 바이러스, 미켈란젤로 바이러스</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">15. Windows 10 Pro에서 기본 제공하는 하드웨어 기반의 디스크 보안 기능으로, 드라이브 전체 볼륨을 암호화하는 명칭은?</div>
+            <div class="answer">비트락커 (BitLocker)</div>
+        </div>
+
+        <div class="subject-title">2과목: PC운영체제 및 하드웨어</div>
+        <div class="qa-card">
+            <div class="question">16. 메인보드 폼팩터에 장착하는 최신 M.2 SSD 규격 중, (1) 상단에 홈이 하나 있는 형태와 (2) 홈이 두 개 뚫려 있는 형태의 통신 인터페이스 규격은 각각 무엇인가?</div>
+            <div class="answer">(1) NVMe 인터페이스 (M-Key) / (2) SATA 인터페이스 (B+M Key)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">17. 메인보드 롬 바이오스(ROM BIOS)를 읽기 속도가 월등히 빠른 RAM 영역으로 복제하여 상주시켜 두고 시스템 처리 속도를 향상시키는 가속 기술은?</div>
+            <div class="answer">쉐도우 메모리 (Shadow Memory)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">18. 기계적 하드디스크(HDD) 내부 플래터 표면에 자성 신호 데이터를 자기 패턴으로 영구 기록하고 정렬하기 위해 사용하는 내부 저장(인코딩) 방식 규격 종류들은?</div>
+            <div class="answer">NRZ, MFM, RLL 방식 (※ IDE는 저장 방식이 아니라 메인보드 하드웨어 연결 인터페이스 규격임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">19. 하드디스크(HDD)의 전체 물리적 저장 용량을 정확하게 산출해 내고자 할 때 수식 공식에 대입되는 3가지 필수 제어 요소값은?</div>
+            <div class="answer">Cylinder(실린더 수), Head(헤드 수), Sector(섹터 수) (※ Disk 자체 개수는 계산 수식에 직접 들어가지 않음)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">20. 멀티미디어 장비 인터페이스인 MIDI(미디) 규격에 대한 명확하고 올바른 기술적 사실은 무엇인가?</div>
+            <div class="answer">전자악기와 컴퓨터 상호 간의 디지털 연주 데이터 전송을 위해 제정된 표준 인터페이스 규격이다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">21. 전 세계 모든 국가의 고유 문자 및 기호를 컴퓨터 시스템 내부에서 깨짐 없이 일관되게 2바이트 크기로 표현하고 다루기 위해 제정된 국제 표준 문자셋 규격은?</div>
+            <div class="answer">유니코드 (Unicode) (※ SBCS는 1바이트 문자 체계이므로 유니코드와 상반됨)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">22. 고속 버퍼 메모리(Cache)의 핵심 소자로 쓰이는 정적램(SRAM)의 명확하고 올바른 반도체적 특징은?</div>
+            <div class="answer">플립플롭(Flip-Flop) 회로 방식의 메모리 셀 구조를 가졌으며, 전원이 공급되는 동안에는 재충전(Refresh) 없이도 자료가 계속 유지되고 동작 속도가 대단히 빠르다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">23. 엔비디아(NVIDIA) 사가 개발하여, 그래픽카드의 GPU를 범용 연산 및 병렬 처리 프로세서(GPGPU)로 널리 보급하고 활용하게 만든 혁신적인 프로그래밍 모델은?</div>
+            <div class="answer">CUDA 프로그래밍 모델</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">24. 컴퓨터 시스템 구조에서 초고속인 CPU 연산 장치와 상대적으로 저속인 주기억장치(DRAM) 사이의 속도 격차를 해소하기 위해 중간에 배치하는 고속 기억장치는?</div>
+            <div class="answer">캐시 메모리 (CACHE)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">25. SSD 및 낸드 플래시 메모리 저장 제어 기법 중, 반도체 내부의 최소 저장 공간인 하나의 셀(Cell) 단위에 정확히 3비트(Bit)의 데이터를 저장하는 구조 방식 명칭은?</div>
+            <div class="answer">TLC (Triple Level Cell) (※ SLC=1비트, MLC=2비트, QLC=4비트)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">26. 데스크톱 및 서버 하드웨어를 조립할 때 보조기억장치(HDD, SSD)를 메인보드 신호선 시스템과 직접 연결하는 버스 인터페이스 표준 규격 종류들은?</div>
+            <div class="answer">E-IDE, SATA, SCSI 등 (※ DP는 모니터 화면 영상을 출력하는 디스플레이 포트 규격임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">27. 애플과 인텔이 공동 개발한 초고속 인터페이스로, 과거 USB 3.0 규격보다 2배 이상 빠르며 데이터 전송뿐만 아니라 모니터 고해상도 영상 출력까지 동시에 완벽 지원하는 포트 규격은?</div>
+            <div class="answer">썬더볼트 (Thunderbolt)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">28. 반도체형 고속 저장장치인 SSD를 메인보드 시스템 버스 구조와 직접 연결하기 위해 채택하여 사용하는 대중적인 내부 인터페이스 규격 종류들은?</div>
+            <div class="answer">SATA, M.2, mSATA 규격 등 (※ DVI는 모니터 전용 구형 영상 출력 인터페이스임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">29. 총 24핀 단자로 설계되었으며, 커넥터 상하 대칭 구조를 이루고 있어 사용자가 방향에 구애받지 않고 뒤집어서도 자유롭게 꽂을 수 있는 최신 고속 USB 인터페이스 단자 형태는?</div>
+            <div class="answer">USB Type-C</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">30. 하나의 물리적인 하드디스크 저장 공간을 소프트웨어적으로 독립된 여러 개의 논리적 드라이브(C:, D: 등) 영역으로 분할하여 관리하는 작업을 무엇이라 하는가?</div>
+            <div class="answer">파티션 (Partition) 작업</div>
+        </div>
+
+        <div class="subject-title">3과목: PC주변기기 및 안전관리</div>
+        <div class="qa-card">
+            <div class="question">31. PC 운용 중 모니터 화면 영상이 가끔씩 미세하게 떨리거나 흔들리는 증상이 나타날 때 취해야 하는 올바른 하드웨어적 대처 및 조치 방법 3가지는?</div>
+            <div class="answer">모니터 자체 모아레 제거 기능 가동, 윈도우 화면 주사율 및 해상도 재설정 변경, 주변 전자기기 자장 간섭을 피해 모니터 설치 위치 변경</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">32. Windows 10 멀티미디어 작업 도중 시스템이 멈추며 화면에 'THREAD STUCK IN DEVICE DRIVER' 청색 블루스크린 오류 코드가 출력될 때 정확한 해결 조치법은?</div>
+            <div class="answer">현재 장착된 외부 그래픽 카드(비디오 카드)의 장치 드라이버를 공인 최신 버전으로 업데이트한다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">33. 인텔 엘더레이크 코어 i5-12400F CPU 하드웨어 제원표를 통해 명확하게 파악하고 해석할 수 있는 올바른 정보들은 무엇인가?</div>
+            <div class="answer">LGA 1700 규격 전용 메인보드 장착 필요, 대용량 18MB L3 캐시 탑재, 기본 작동 베이스 클록 속도는 2.5 GHz 임</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">34. 조립 컴퓨터 허브 연동 후 전원 버튼을 인가했으나 본체 내 쿨러나 LED를 포함해 전기적인 공급 반응이 완전히 전무할 때 일차적으로 우선 정밀 점검해야 하는 핵심 파트는?</div>
+            <div class="answer">전원 공급 장치(파워서플라이) 플러그 결선 상태, 메인보드 주 전원 케이블 체결 유무, CPU 자체 안착 정상 유무 등</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">35. Windows 운영체제가 비정상적으로 급작스럽게 다운되거나 깔끔하게 종료되지 못하고 에러를 뿜는 대표적인 소프트웨어적 원인들은?</div>
+            <div class="answer">실행 중인 특정 응용 프로그램의 내부 충돌 및 강제 종료, 시작 프로그램 목록 내 소프트웨어와 OS 간의 충돌, 백그라운드 램 상주 유틸리티 간의 메모리 번지 간섭</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">36. SATA 인터페이스 기반 보조기억장치 제어 모드 설정 시, 메인보드 바이오스(BIOS) 상에서 완벽히 연동 및 가동할 수 있는 표준 작동 모드 종류들은?</div>
+            <div class="answer">IDE 표준 모드, RAID(레이드 시스템 구축) 모드, AHCI(고급 호스트 컨트롤러 인터페이스) 모드</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">37. DOS 부팅이나 드라이브 마운트 중 화면에 'Invalid media type reading drive C.' 시스템 오류 메시지가 표시되는 가장 근본적인 하드웨어 조치 누락 상황은?</div>
+            <div class="answer">FDISK 등의 유틸리티로 하드디스크의 논리적 파티션 구역 분할 설정은 마쳤으나, 실제 데이터 기록을 위한 포맷(Format) 과정을 수행하지 않은 상태</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">38. 메인보드 슬롯 버스 중 고속 데이터 통신을 지원하는 PCI 슬롯(또는 PCIe) 인터페이스 규격에 직접 장착하여 사용하는 일반적인 하드웨어 카드의 종류들은?</div>
+            <div class="answer">사운드 카드, 네트워크 랜카드, 모뎀, 고속 확장 컨트롤러 등 (※ 시스템 주기억장치 메모리는 메인보드 전용 RAM 소켓에만 장착 가능)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">39. 과거 마우스나 키보드 조작이 불가하던 텍스트 위주의 구형 바이오스와 달리, 화려한 그래픽 GUI와 마우스 클릭 인터페이스를 완전 지원하여 초보자도 다루기 쉽게 고안된 차세대 메인보드 펌웨어 바이오스 표준 명칭은?</div>
+            <div class="answer">UEFI 바이오스</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">40. 컴퓨터 전원 인가 시 마이크로프로세서가 가동하는 POST(Power On Self Test) 자가 진단 과정의 올바른 하드웨어 루틴 시퀀스 순서는?</div>
+            <div class="answer">시스템 버스 테스트 → CMOS 내용 확인 → 그래픽 카드 테스트 → 메모리 테스트 → 키보드 테스트 → P&P 기능 동작 → 디스크 테스트 → DMI 기능 동작</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">41. 시스템의 전반적인 하드웨어 성능 업그레이드 및 부품 교체 작업을 단행하기 전, 기술자가 반드시 안전하게 선행 처리해야 할 올바른 준비 가이드는?</div>
+            <div class="answer">하드디스크 내부의 유저 중요 데이터 및 레지스트리를 외부 스토리지에 안전하게 100% 백업 처리해 둔다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">42. PC 주변기기 중 입력 장치인 마우스(Mouse)의 '물리적인 작동 원리 및 센서 감지 방식'에 따라 명확하게 세부 분류하는 정확한 유형 명칭은?</div>
+            <div class="answer">볼 마우스, 광 마우스(Optical Mouse), 레이저 마우스 등 (※ USB, PS/2, Serial은 연결 커넥터 인터페이스에 따른 분류임)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">43. 모니터 화면 디스플레이 장치 등을 장시간 컴퓨터 장치 앞에 상주하여 바르지 못한 자세로 작업할 때 유발되는 눈의 피로, 손목 터널 증후군, 목 디스크 등의 육체적 임상 증후군을 총칭하는 의학 용어는?</div>
+            <div class="answer">VDT 증후군 (Visual Display Terminal Syndrome / VDTS)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">44. 산업 현장이나 가정 내에서 일시적인 낙뢰 또는 송전 차단으로 갑작스러운 상전 정전 사고가 발생했을 때, 내장된 배터리를 가동하여 컴퓨터 시스템에 끊김 없이 수 분간 안정적인 교류 전력을 공급해 안전한 셧다운을 돕는 비상 장치는?</div>
+            <div class="answer">UPS (무정전 전원 공급 장치)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">45. 과거 고성능 중대형 서버 하드웨어 시스템 환경에서 주로 채택해 활용하던 엔터프라이즈급 주변기기 인터페이스 규격인 SCSI(스카시)의 명확한 기술적 특징은?</div>
+            <div class="answer">일반 E-IDE 방식 주변기기보다 가격이 고가이나, 다중 입출력 및 여러 명령 작업을 동시에 병렬 처리하는 멀티태스킹 환경에서 압도적으로 유리하다</div>
+        </div>
+
+        <div class="subject-title">4과목: PC네트워크</div>
+        <div class="qa-card">
+            <div class="question">46. 무선 네트워크 통신 표준인 IEEE 802.11 규격 중, 5GHz 주파수 대역을 사용하여 기본 최대 433Mbps 속도를 내고, 다중 안테나 기술(8x8 MIMO) 연동 시 이론상 최대 6.93Gbps의 초고속 전송 대역을 확보하는 표준 규격 기호 명칭은?</div>
+            <div class="answer">IEEE 802.11 ac</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">47. 국제 표준화 기구(ISO)의 OSI 참조 모델 7계층 구조 중에서 데이터의 구문 변환(인코딩/디코딩), 문맥 제어, 암호화/복호화 및 압축 서비스를 전담하여 처리하는 레이어 계층은?</div>
+            <div class="answer">표현 계층 (Presentation Layer / 프리젠테이션 계층)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">48. 인터넷 TCP/IP 프로토콜 스택 중, 네트워크 혼잡이나 라우팅 에러로 인해 하위 패킷이 유실 및 폐기되더라도 응용 계층의 신뢰성 확보를 위해 손실 패킷을 끝까지 재전송하여 통신 정합성을 보장하는 연결 지향형 트랜스포트 프로토콜은?</div>
+            <div class="answer">TCP (Transmission Control Protocol)</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">49. 데이터 네트워크 데이터 통신 기술 중 '패킷 스위칭(Packet Switching, 패킷 교환 기법)'이 가지는 명확하고 올바른 시스템적 동작 메커니즘 특징 3가지는?</div>
+            <div class="answer">모든 데이터는 송신 전 패킷 단위로 쪼개져 회선과 스위치를 거쳐 전달되며, 스토어 앤 포워드(Store-and-Forward) 축적 전송 방식을 쓰고, 스위칭 유닛 링크에 인입된 패킷을 임시 보관하기 위한 메모리 버퍼(Queue)가 반드시 필수적으로 요구된다</div>
+        </div>
+        <div class="qa-card">
+            <div class="question">50. 공공 및 기업 네트워크 통신 연동 시 데이터 무결성을 보장하고 안전한 패킷 보안 암호화 서비스를 제공하기 위해 도입해 사용하는 핵심 암호화/보안 기술 표준 종류들은?</div>
+            <div class="answer">SSL(보안 소켓 계층), TLS(전송 계층 보안), IPSec(IP 보안 프로토콜) 등 (※ SD Card는 단순 플래시 메모리 물리 저장 매체 규격임)</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleQuizMode() {
+        document.getElementById('content-area').classList.toggle('hide-answer');
+    }
+
+    document.getElementById('content-area').addEventListener('click', function(e) {
+        if (e.target.classList.contains('answer')) {
+            e.target.classList.toggle('revealed');
+        }
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        const themeBtn = document.querySelector('.theme-toggle-btn');
+
+        if (body.hasAttribute('data-theme')) {
+            body.removeAttribute('data-theme');
+            themeBtn.innerHTML = '🌙 다크모드';
+            localStorage.setItem('theme3', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = '☀️ 라이트모드';
+            localStorage.setItem('theme3', 'dark');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme3');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle-btn').innerHTML = '☀️ 라이트모드';
+        }
+    });
+</script>
+
+</body>
+</html>
